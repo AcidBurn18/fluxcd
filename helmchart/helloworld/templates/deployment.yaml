@@ -15,7 +15,7 @@ spec:
         app: hello-world
     spec:
       containers:
-      - name: hello-world
+      - name: hello-world-container
        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
        imagePullPolicy: {{ .Values.image.pullPolicy }}
        ports:
