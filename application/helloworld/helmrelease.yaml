@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: demo-helloworld
+      chart: ./helmchart/helloworld/
       version: '4.0'
       sourceRef:
         kind: GitRepository
