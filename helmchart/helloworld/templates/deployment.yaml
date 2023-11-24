@@ -21,4 +21,4 @@ spec:
        ports:
        - containerPort: 8080
       imagePullSecret:
-      - name: {{.values.imagePullSecretsName}}
+      - name: {{.Values.imagePullSecretsName}}

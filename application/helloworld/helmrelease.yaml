@@ -16,7 +16,7 @@ spec:
       interval: 1m
   values:
     replicaCount: 2
-    imagePullSecretName: docker-secret
+    imagePullSecretsName: docker-secret
     image:
       repository: anshagrawal/demo
       tag: 1.0
