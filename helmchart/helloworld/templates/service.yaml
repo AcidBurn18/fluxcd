@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: demo-Service
   labels:
-    app:hello-world
+    app: hello-world
 spec:
   selector:
     app: hello-world
