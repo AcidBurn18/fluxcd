@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: ./helmchart/helloworld/
-      version: '1.6'
+      version: '1.7'
       sourceRef:
         kind: GitRepository
         name: demo
@@ -18,6 +18,6 @@ spec:
     replicaCount: 2
     imagePullSecretsName: demo-secret
     image:
-      repository: docker.io/anshagrawal/demo
+      repository: anshagrawal/demo
       tag: '1.0'
       pullPolicy: Always
