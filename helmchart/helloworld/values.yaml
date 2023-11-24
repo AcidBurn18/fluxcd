@@ -1,0 +1,6 @@
+# replicaCount: 2
+# imagePullSecretsName: demo-secret
+# image:
+#   repository: anshagrawal/demo
+#   tag: '2.0'
+#   pullPolicy: Always
