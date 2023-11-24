@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: ./helmchart/helloworld/
-      version: '7.4'
+      version: '7.5'
       sourceRef:
         kind: GitRepository
         name: demo
