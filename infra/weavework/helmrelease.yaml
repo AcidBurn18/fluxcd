@@ -4,8 +4,7 @@ metadata:
   name: weavework
   namespace: flux-system
 spec:
-  interval: 1m
-  targetNamespace: default
+  interval: 1m0s
   chart:
     spec:
       chart: weave-gitops
