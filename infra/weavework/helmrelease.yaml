@@ -18,7 +18,7 @@ spec:
       create: true
       passwordHash: $2y$10$zTRdq9bLcEmGF27exGcKZ.LnSNIOpwV.n5H7tLP4/oyuSRGjTk7Ai
       username: admin
-      namespace: flux-system
+    namespace: flux-system
     rbac:
       create: true
     service:
