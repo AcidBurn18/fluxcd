@@ -1,9 +1,33 @@
+# apiVersion: source.toolkit.fluxcd.io/v1beta2
+# kind: HelmRepository
+# metadata:
+#   name: weavework
+#   namespace: flux-system
+# spec:
+#   interval: 10m
+#   type: oci
+#   url: oci://ghcr.io/weaveworks/wego-app
 apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+kind: OCIRepository
 metadata:
   name: weavework
   namespace: flux-system
 spec:
-  interval: 10m
-  type: oci
+  interval: 1m
   url: oci://ghcr.io/weaveworks/wego-app
+  ref:
+    tag: latest
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: weavework
+  namespace: flux-system
+spec:
+  interval: 1m
+  targetNamespace: flux-system
+  prune: true
+  sourceRef:
+    kind: OCIRepository
+    name: weavework
+  path: ./
