@@ -71,7 +71,7 @@ rbac:
 adminUser:
   # -- Whether the local admin user should be created.
   # If you use this make sure you add it to `rbac.impersonationResourceNames`.
-  create: false
+  create: trur
   # -- Specifies whether the clusterRole & binding to the admin user should be created.
   # Will be created only if `adminUser.create` is enabled. Without this,
   # the adminUser will only be able to see resources in the target namespace.
@@ -84,11 +84,11 @@ adminUser:
   createSecret: true
   # -- Set username for local admin user, this should match the value in the secret `cluster-user-auth`
   # which can be created with `adminUser.createSecret`. Requires `adminUser.create`.
-  username: gitops-test-user
+  username: admin
   # -- (string) Set the password for local admin user. Requires `adminUser.create` and `adminUser.createSecret`
   # This needs to have been hashed using bcrypt.
   # You can do this via our CLI with `gitops get bcrypt-hash`.
-  passwordHash:
+  passwordHash: $2y$10$zTRdq9bLcEmGF27exGcKZ.LnSNIOpwV.n5H7tLP4/oyuSRGjTk7Ai
 podAnnotations: {}
 podLabels: {}
 # aadpodidbinding: identity
