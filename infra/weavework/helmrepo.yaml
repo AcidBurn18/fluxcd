@@ -1,8 +1,12 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
 metadata:
   name: weavework
   namespace: flux-system
 spec:
-  interval: 1m0s
-  url: https://helm.gitops.weave.works
+  interval: 1m
+  url: https://github.com/AcidBurn18/fluxcd
+  ref:
+    branch: main
+  secretRef:
+    name: flux-system
