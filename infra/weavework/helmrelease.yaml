@@ -10,7 +10,7 @@ spec:
       chart: ./helmchart/gitops-server
       reconcileStrategy: ChartVersion
       sourceRef:
-        kind: GitRepositoryRepository
+        kind: GitRepository
         name: weavework
       version: 4.0.x
   values:
