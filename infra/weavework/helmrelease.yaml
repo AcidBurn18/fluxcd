@@ -23,6 +23,6 @@ spec:
     #   create: true
     service:
       create: true
-      type: ClusterIP
+      type: NodePort
       port: 9001
       
