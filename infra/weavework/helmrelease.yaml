@@ -7,14 +7,14 @@ spec:
   interval: 1m0s
   chart:
     spec:
-      chart: ./helmchart/gitops-server/
+      chart: weave-gitops #./helmchart/gitops-server
       reconcileStrategy: ChartVersion
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: weavework
       version: 4.0.x
   values:
-    adminuser:
+    adminUser:
       create: true
       passwordHash: $2y$10$zTRdq9bLcEmGF27exGcKZ.LnSNIOpwV.n5H7tLP4/oyuSRGjTk7Ai
       username: admin
@@ -23,6 +23,6 @@ spec:
     #   create: true
     service:
       create: true
-      type: NodePort
+      type: ClusterIP
       port: 9001
       
