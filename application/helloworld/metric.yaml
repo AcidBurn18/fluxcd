@@ -4,7 +4,7 @@ apiVersion: flagger.app/v1beta1
 kind: MetricTemplate
 metadata:
   name: cpu-utilization
-  namespace: app-test
+  namespace: demo
 spec:
   provider:
     type: prometheus
