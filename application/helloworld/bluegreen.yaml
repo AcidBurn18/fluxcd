@@ -1,0 +1,47 @@
+---
+apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: hello-world-dep
+  namespace: demo
+spec:
+  # service mesh provider can be: kubernetes, istio, appmesh, nginx, gloo
+  provider: kubernetes
+  # deployment reference
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo
+  # the maximum time in seconds for the canary deployment
+  # to make progress before rollback (default 600s)
+  progressDeadlineSeconds: 60
+  service:
+    port: 8080
+    targetPort: 8080
+    portDiscovery: true
+  analysis:
+    interval: 10s
+    threshold: 1
+    iterations: 3
+    metrics:
+      - name: cpu-utilization
+        templateRef:
+          name: cpu-utilization
+        thresholdRange:
+          max: 80
+        interval: 1m
+    # acceptance/load testing hooks
+    webhooks:
+      - name: smoke-test
+        type: pre-rollout
+        url: http://flagger-loadtester.app-test/
+        timeout: 5s
+        metadata:
+          type: bash
+          cmd: "curl -s http:/acr-pet-clinic-deployment.app-test:8080"
+      - name: "load test"
+        type: rollout
+        url: http://flagger-loadtester.app-test/
+        timeout: 15s
+        metadata:
+          cmd: "hey -z 1m -q 5 -c 2 http://acr-pet-clinic-deployment.app-test:8080/"

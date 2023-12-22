@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flagger
+  namespace: flagger
+spec:
+  interval: 1h
+  releaseName: flagger
+  install: # override existing Flagger CRDs
+    crds: CreateReplace
+  upgrade: # update Flagger CRDs
+    crds: CreateReplace
+  chart:
+    spec:
+      chart: flagger
+      version: 1.x # update Flagger to the latest minor version
+      interval: 6h # scan for new versions every six hours
+      sourceRef:
+        kind: HelmRepository
+        name: flagger
+      verify: # verify the chart signature with Cosign keyless
+        provider: cosign 
+  values:
+    # nodeSelector:
+    #   kubernetes.io/os: linux
+    meshProvider: kubernetes
+    prometheus:
+      install: true
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "9797"
+    #metricsServer: "http://flagger-prometheus.flagger:9090"  #flagger-prometheus.flagger.svc.cluster.local # http://10.1.2.85:9090
