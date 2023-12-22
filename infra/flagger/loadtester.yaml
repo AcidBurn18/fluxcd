@@ -27,4 +27,4 @@ spec:
     name: flagger-loadtester
     namespace: flagger
   path: ./tester
-  targetNamespace: app-test
+  targetNamespace: demo
