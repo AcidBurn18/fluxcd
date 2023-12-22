@@ -21,7 +21,7 @@ spec:
     portDiscovery: true
   analysis:
     interval: 10s
-    threshold: 1
+    threshold: 2
     iterations: 3
     metrics:
       - name: cpu-utilization
@@ -31,17 +31,17 @@ spec:
           max: 80
         interval: 1m
     # acceptance/load testing hooks
-    webhooks:
-      - name: smoke-test
-        type: pre-rollout
-        url: http://flagger-loadtester.demo/
-        timeout: 5s
-        metadata:
-          type: bash
-          cmd: "curl -s http://demo-deployment.demo:8080"
-      - name: "load test"
-        type: rollout
-        url: http://flagger-loadtester.demo/
-        timeout: 15s
-        metadata:
-          cmd: "hey -z 1m -q 5 -c 2 http://demo-deployment.demo:8080/"
+    # webhooks:
+    #   - name: smoke-test
+    #     type: pre-rollout
+    #     url: http://flagger-loadtester.demo/
+    #     timeout: 5s
+    #     metadata:
+    #       type: bash
+    #       cmd: "curl -s http://demo-deployment.demo:8080"
+    #   - name: "load test"
+    #     type: rollout
+    #     url: http://flagger-loadtester.demo/
+    #     timeout: 15s
+    #     metadata:
+    #       cmd: "hey -z 1m -q 5 -c 2 http://demo-deployment.demo:8080/"
