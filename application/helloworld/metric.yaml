@@ -10,4 +10,4 @@ spec:
     type: prometheus
     address: http://flagger-prometheus.flagger:9090  # Use Prometheus as the provider
   query: |
-    sum(rate(container_cpu_usage_seconds_total{namespace="app-test"}[5m])) by (pod)
+    sum(rate(container_cpu_usage_seconds_total{namespace="demo"}[5m])) by (pod)
