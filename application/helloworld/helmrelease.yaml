@@ -19,5 +19,5 @@ spec:
     imagePullSecretsName: demo-secret
     image:
       repository: anshagrawal/demo
-      tag: '3.0'
+      tag: '2.0'
       pullPolicy: Always

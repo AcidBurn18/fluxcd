@@ -34,14 +34,14 @@ spec:
     webhooks:
       - name: smoke-test
         type: pre-rollout
-        url: http://flagger-loadtester.app-test/
+        url: http://flagger-loadtester.demo/
         timeout: 5s
         metadata:
           type: bash
           cmd: "curl -s http://demo.demo:8080"
       - name: "load test"
         type: rollout
-        url: http://flagger-loadtester.app-test/
+        url: http://flagger-loadtester.demo/
         timeout: 15s
         metadata:
           cmd: "hey -z 1m -q 5 -c 2 http://demo.demo:8080/"
