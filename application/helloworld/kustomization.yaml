@@ -4,5 +4,5 @@ resources:
 - namespace.yaml
 - gitrepo.yaml
 - helmrelease.yaml
-- metric.yaml
+# - metric.yaml
 - bluegreen.yaml
