@@ -7,3 +7,5 @@ spec:
   interval: 1h
   url: oci://ghcr.io/fluxcd/charts
   type: oci
+  verify:
+    provider: cosign
