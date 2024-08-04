@@ -1,8 +1,9 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: flagger
-  namespace: flagger
+  namespace: flagger-system
 spec:
   interval: 1h
   releaseName: flagger
@@ -21,12 +22,5 @@ spec:
       verify: # verify the chart signature with Cosign keyless
         provider: cosign 
   values:
-    # nodeSelector:
-    #   kubernetes.io/os: linux
-    meshProvider: kubernetes
-    prometheus:
-      install: true
-    podAnnotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "9797"
-    #metricsServer: "http://flagger-prometheus.flagger:9090"  #flagger-prometheus.flagger.svc.cluster.local # http://10.1.2.85:9090
+    nodeSelector:
+      kubernetes.io/os: linux
